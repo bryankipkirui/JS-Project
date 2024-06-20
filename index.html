@@ -3,11 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
     <style>
         body {
             font-family: Arial, sans-serif;
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 80px 1fr auto;
+            grid-template-areas:
+                "navbar"
+                "main"
+                "footer";
+        }
+        .nav-bar {
+            grid-area: navbar;
+        }
+        .nav-bar ul {
+            display: flex;
+            /* flex-direction: row; */
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-bar ul li {
+            margin: 10px;
+        }
+        .nav-bar ul li a{
+            text-decoration: none;
+            text-transform: uppercase;
+            color: black;
+            cursor: pointer;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-bar ul li a:hover{
+            color: #f18930;
+
+        }
+
+        .main {
+            grid-area: main;
+        }
+
+        .container{
+            grid-area: footer;
+            background: whitesmoke;
+
+            display: flex;
+            border-radius: 30px 10px 0 0; 
+            padding: 20px;
+        }
+        /* .footer{
+            grid-area: footer;
+            background: whitesmoke;
+
+            display: flex;
+            border-radius: 30px 10px 0 0; 
+            padding: 20px;
+        } */
+
+        .footer-content {
+            flex: 1;
+            margin-right: 20px;
+
+        }
+
+        .footer-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+            color: #333;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .footer-content ul{
+            text-align: center;
+        }
+
+        .list li{
+            width: auto;
+            text-align: center;
+            list-style: none;
+            padding: 10px;
+            position: relative;
+        }
+
+        .list li::before{
+            content: "";
+            position: absolute;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            top: 100%;
+            width: 0;
+            height: 2px;
+            background: #f18930;
+            transition-duration: .5s;
+        }
+
+        .list li:hover::before{
+            width: 70px;
+        }
+
+        .list li a{
+            text-decoration: none;
+            color: #333;
+            letter-spacing: 2px;
+            margin-bottom: 30px
+        }
+
+        .list  a:hover{
+            color: #f18930;
+
+        }
+
+        .social-icons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icons i{
+
+            margin-right: 20px;
+            color: #333;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .social-icons i:hover{
+            color: #f18930;
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        .bottom-bar{
+            /* grid-area: footer; */
+            /* background-color: #f18930; */
+            background-color: aliceblue;
+            text-align: center;
+            padding: 10px 0;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
         .product {
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -35,7 +190,65 @@
     </style>
 </head>
 <body>
-    <div id="products" class="product-container"></div>
+    <div class="grid-container">
+
+        <div class="nav-bar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+
+            </ul>
+        </div>
+
+        <div class="main">
+
+            <div id="products" class="product-container"></div>
+
+                <div id="cart"></div>
+
+        </div>
+
+        <div class="footer">
+
+            <div class="container">
+                <div class="footer-content">
+                    <h2>Contact Us</h2>
+                    <p>Address: 123 Main Street, Anytown, USA</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: logan@example.com</p>
+                </div>
+    
+                <div class="footer-content">
+                    <h2>Quick Links</h2>
+                    <ul class="list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    
+                </div>
+    
+                <div class="footer-content">
+                    <h2>Follow Us</h2>
+                   <div class="social-icons">
+                    <a href="#"> <i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#"> <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="#"> <i class="fa fa-github" aria-hidden="true"></i></a>
+                   </div>
+                </div>
+            </div>
+            
+               <div class="bottom-bar">
+                    <p>@Copy 2023 Your Company. All rights reserved.</p>
+               </div>
+        </div>
+        
+    </div>
 
     <script src="index.js"></script>
 </body>
